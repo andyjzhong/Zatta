@@ -1,7 +1,7 @@
 import './App.css';
-import Landing from './components/Landing'
+import Landing from './components/Landing/Landing'
 import { Route , Switch } from 'react-router-dom'
-import Login from './components/Login';
+import Login from './components/login/Login';
 
 import React, { useState, useEffect } from 'react'
 import Dashboard from './components/Dashboard/Dashboard.jsx'
@@ -29,10 +29,9 @@ function App() {
   return (
     <div class='bg-gray-50' >
       
-      
-      <Route exact path="/Login" component ={Login}/>
-      
       <Route exact path='/' component={Landing} />
+
+      <Route exact path="/Login" component ={Login}/>
     
       <Route  exact path = '/dashboard' component = { () => <Dashboard files={files} /> } />
 
