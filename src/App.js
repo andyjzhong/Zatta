@@ -30,14 +30,10 @@ function App() {
     <div class='bg-gray-50' >
       
       
-    <Switch>
-    <Route exact path="/Login" component ={Login}/>
+      <Route exact path="/Login" component ={Login}/>
+      
+      <Route exact path='/' component={Landing} />
     
-    <Landing/>
-    
-    </Switch>
-      <Route  exact path = '/dashboard'
-              component = { Dashboard } />
       <Route  exact path = '/dashboard' component = { () => <Dashboard files={files} /> } />
 
       <Route exact path = '/notes/:id' component={(routerProps) => <MainApp note={routerProps.match.params.id} /> } />
