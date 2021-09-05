@@ -3,6 +3,7 @@ import Landing from './components/Landing'
 import { Route , Switch } from 'react-router-dom'
 import Login from './components/Login';
 import Dashboard from './components/Dashboard'
+import MainApp from './components/mainApp';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
     </Switch>
       <Route  exact path = '/dashboard'
               component = { Dashboard } />
+
+      <MainApp />
     </div>
   );
 }
