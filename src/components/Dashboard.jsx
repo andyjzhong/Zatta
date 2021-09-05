@@ -28,20 +28,17 @@ function Dashboard(props) {
         <div>
 
             {/* pass in the dashbopard header */}
-                <DashHeader />
+            <DashHeader />
 
             {/* search bar / file filter */}
             
-            <Route  render= {(routerProps) => (
-                <DashFilter 
-                    files = {files}
-                    setFilter= {setFilter}
-                    filter= {filter}
-                    search = {search}
-                    setSearch= {setSearch}
-                    match= {routerProps}
-                />
-            )} />
+            <DashFilter 
+                files = {files}
+                setFilter= {setFilter}
+                filter= {filter}
+                search = {search}
+                setSearch= {setSearch}
+            />
 
             {/* new file button */}
             <DashNewNote />

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import fileImage from '../images/file.png'
-import '../App.css'
 
 function DashFiles({ files, filter }) {
     return (
@@ -17,7 +16,7 @@ function DashFiles({ files, filter }) {
                     return (
                         <div>
                             <div>
-                                <Link to= {`/${filter.subject}`} key= {filter.subject} style={{display: "flex", flexDirection: "column", margin: "20px"}}>
+                                <Link to= {`/${filter.subject}`} key= {filter.subject} style={{display: "flex", flexDirection: "column", margin: "20px", textDecoration: "none", color: "black"}}>
                                     <img src= {fileImage} alt= {filter.subject} width= "60px" height= "100%"/>
                                     {filter.subject}
                                 </Link>

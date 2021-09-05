@@ -29,7 +29,7 @@ function DashSearch({ search, setSearch, match, setFilter, filter }) {
             <InputGroup style={{display: "flex", justifyContent: "right"}} className="mb-3">
                 <form>
                     <FormControl placeholder="Filter Notes" value={filter} onChange={e => {setFilter(e.target.value)}} />
-                    <Button style={{float: "right"}} type= "submit" onClick={resetFilter} variant="outline-secondary">Reset</Button>
+                    <Button onClick={resetFilter} variant="outline-secondary" style={{outline:"none", boxShadow:"none"}}>Reset</Button>
                 </form>
             </InputGroup>
 

@@ -28,11 +28,7 @@ function DashNewNote(props) {
     function closeModal() {
         setModal(false)
     }
-
-    // function closeCreateModal() {
-    //     setModal(false)
-    //     <Alert>New note successfully made!</Alert>
-    // }
+    
 
     return (
         
@@ -48,7 +44,7 @@ function DashNewNote(props) {
                     </div>
                     <InputGroup className="mb-3">
                         <FormControl placeholder="Enter Note Name" style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}}/>
-                        <Button type= "submit"  variant="outline-secondary">Create</Button>
+                        <Button type= "submit"  variant="outline-secondary" >Create</Button>
                     </InputGroup>                
                 </Modal>
             </div>
