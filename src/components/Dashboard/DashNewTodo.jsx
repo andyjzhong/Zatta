@@ -8,25 +8,27 @@ import { useMediaQuery } from 'react-responsive';
 //https://www.npmjs.com/package/react-modal#installation
 
 
-function DashNewTodo(props) {
+function DashNewTodo({ history }) {
 
     const [modal, setModal] = useState(false)
     const [subject, setSubject] = useState('')
+    // const currentUser = userStore(state => state.currentUser)
+    // const setNotes = userStore(state => state.setNotes) 
     const screen = useMediaQuery({query: "(min-width: 1200px)"})
 
+    
     const modalStyle = {
         content: {
-          top: '25%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2
+            top: '25%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 2
         },
-      };
-
-
+    };
+    
     function openModal() {
         setModal(true)
     }
@@ -35,17 +37,15 @@ function DashNewTodo(props) {
         setModal(false)
     }
 
-
+    // //change to tasks instead of notes
     // const newNote = () => {
-    //     const url = 'https://zatta1.herokuapp.com/api/'
-    //     const urlUser = url + `users/61337912ff3bed0016fed742` // has the user's id not note
-    //     console.log(urlUser)
-    //     axios.get(urlUser)
-    //         .then(res => {
-    //             const newUser = res.data._id
-    //             const urlNotes = `https://zatta1.herokuapp.com/api/notes/${newUser}`
-    //             axios.post(urlNotes, { subject: subject, text: '', author: newUser })
-    //                 .then(res => console.log(res))
+    //     const urlNotes = `https://zatta1.herokuapp.com/api/notes/`
+    //     axios.post(urlNotes, { subject: subject, text: '', author: currentUser[0]._id })
+    //         .then((res) => {
+    //             axios.get(urlNotes).then(res => {
+    //                 setNotes(res.data)
+    //             })
+    //             history.push(`/notes/${res.data._id}`)
     //         })
     //     closeModal()
     // }
@@ -65,6 +65,7 @@ function DashNewTodo(props) {
                     </div>
                     <InputGroup className="mb-3">
                         <FormControl placeholder="Enter Task" style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}} value={subject} onChange={(e) => setSubject(e.target.value)} />
+                        {/* add the onclick to make the task in database */}
                         <Link to="/dashboard"><Button variant="outline-secondary" >Create</Button></Link>
                     </InputGroup>                
                 </Modal>

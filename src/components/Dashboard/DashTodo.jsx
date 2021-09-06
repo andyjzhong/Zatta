@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import './Dashboard.css'
-import todo from './todo.json'
-import DashTodoFilter from './DashTodoFilter'
+import './Dashboard.css';
+import todo from './todo.json';
+import DashTodoFilter from './DashTodoFilter';
 import DashNewTodo from './DashNewTodo';
+import { useMediaQuery } from 'react-responsive';
+
+
 
 
 
@@ -10,21 +13,15 @@ function DashTodo(props) {
 
     const [task, setTask] = useState(todo)
     const [taskFilter, setTaskFilter] = useState("")
+    const screen = useMediaQuery({query: "(min-width: 1024px)"})
 
-    // const urlNotes = "https://zatta1.herokuapp.com/api/notes/"
 
-    // useEffect(() => {
-    
-    //     axios.get(urlNotes).then((res) => {
-    //         setTask(res.data)
-            
-    //     })
-        
-    //   }, [])
 
 
     return (
+        
         <div>
+            
             <div style={{display: "flex", flexDirection:"row", justifyContent: "flex-end", alignItems: "baseline", flexWrap: "wrap"}}>
                 <DashTodoFilter 
                 taskFilter={taskFilter}
@@ -33,30 +30,28 @@ function DashTodo(props) {
     
                 <DashNewTodo />
             </div>
-
-        <div className='dash-task-container'>
-            <section className='dash-task-box'>
-                
-                {task.filter((file) => {
-                    if (taskFilter === "") {
-                        return file.subject //
-                    } else if (file.subject.toLowerCase().includes(taskFilter.toLowerCase())) { //
-                        return file.subject //
-                    } else return null 
-                }).map(filter => {
-                    return (
-                        <div className='dash-task'>
-                            <div className="dash-task-name">
-                                <div className='task-card' style={{display: "flex", justifyContent: "center"}}>
+            <div className='dash-task-container'>
+                <section className='dash-task-box'>
+                    {task.filter((file) => {
+                        if (taskFilter === "") {
+                            return file.subject //
+                        } else if (file.subject.toLowerCase().includes(taskFilter.toLowerCase())) { //
+                            return file.subject //
+                        } else return null 
+                    }).map(filter => {
+                        return (
+                            <div className='dash-task'>
+                                <div className="dash-task-name">
+                                    <div className='task-card' style={{display: "flex", justifyContent: "center"}}>
                                         <span>{filter.subject}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })
-                }
-            </section>
-        </div>
+                        )
+                    })
+                    }
+                </section>
+            </div>
         </div>
     );
 }
