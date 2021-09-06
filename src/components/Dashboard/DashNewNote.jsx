@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { Button, InputGroup, FormControl } from 'react-bootstrap'
-import { CloseButton } from 'react-bootstrap';
+import { Button, InputGroup, FormControl, CloseButton } from 'react-bootstrap';
 import axios from 'axios';
 import userStore  from '../Users/GetUsers.js';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 
 
@@ -14,6 +14,7 @@ function DashNewNote({ history }) {
     const [subject, setSubject] = useState('')
     const currentUser = userStore(state => state.currentUser)
     const setNotes = userStore(state => state.setNotes) 
+    const screen = useMediaQuery({query: "(min-width: 1200px)"})
 
 
     const modalStyle = {
@@ -55,7 +56,7 @@ function DashNewNote({ history }) {
         
         <div>
             <div style={{display: "flex", justifyContent: "center"}}>
-                <Button style={{display: "flex", justifyContent: "right"}} onClick={openModal} variant="primary">New Note</Button>
+                <Button style={{display: "flex", justifyContent: "right", marginLeft:"10px"}} onClick={openModal} variant="primary">{screen ? "New Note" : "+"}</Button>
             </div>
             <div className= "modalDiv">
                 <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>

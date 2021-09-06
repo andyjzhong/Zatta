@@ -43,3 +43,7 @@
     margin-top: 65px;
     margin-left: 20%;
 } */
+
+.resetFilterButton:hover {
+    color: black;
+}

@@ -22,12 +22,12 @@ function Dashboard({ history }) {
     } ,[])
 
     return (
-        <div>
+        <div style={{backgroundColor:"#E7E9EB"}}>
 
             <Navigation />
 
-            <div style={{display: "flex", justifyContent: 'center'}}>
-                <div style={{flexDirection: 'row', width: "70%"}}>
+            <div style={{display: "flex", justifyContent: 'space-around', marginTop:"10px"}}>
+                <div style={{flexDirection: 'row', width: "70%", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"20px", padding: "10px"}}>
                     <DashFiles 
                         filter= {filter}
                         files= {files}
@@ -35,13 +35,13 @@ function Dashboard({ history }) {
                         setFilter= {setFilter}
                     />
                 </div>
-                <div style={{display: "flex", flexDirection: 'column'}}>
+                <div style={{display: "flex", flexDirection: 'column', backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"20px", padding: "10px"}}>
                     <DashTodo />
                 </div>
 
             </div>
             
-            <Footer />
+            {/* <Footer /> */}
 
         </div>
     );

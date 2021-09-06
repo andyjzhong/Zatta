@@ -23,7 +23,7 @@ function DashFiles({ filter, setFilter }) {
     return (
 
         <div>
-            <div style={{display: "flex", flexDirection:"row", justifyContent: "flex-end", alignItems: "baseline", flexWrap: "wrap"}}>
+            <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap" }}>
                 <DashFilter 
                     files = {files}
                     setFilter= {setFilter}  
@@ -33,7 +33,7 @@ function DashFiles({ filter, setFilter }) {
                 <DashNewNote />
             </div>
 
-            <div className='dash-files-container'>
+            {/* <div className='dash-files-container'> */}
                 <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}}>
                     {files.filter((file) => filter === ""                                                 // if 
                                             ? file.subject 
@@ -42,11 +42,15 @@ function DashFiles({ filter, setFilter }) {
                                             : null                                                        // else      
                         ).map(filter => {
                             return (
-                                <div className='dash-files'>
+                                <div className='dash-files' style={{width: "8rem"}}>
                                     <Link to= {`/notes/${filter._id}`} key= {filter.subject} className='dash-file-link' style={{display: "flex", flexDirection: "column", margin: "20px", textDecoration: "none", color: "black"}}>
-                                        <div className='dash-card'>
-                                            <img src= {fileImage} alt= {filter.subject} width= "60px" height= "100%"/>
-                                            <span style={{display: "flex", justifyContent: "center", flexWrap: "wrap", width: "50%", margin: "0%"}}>{filter.subject}</span>
+                                        <div className='dash-card' style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                                            <div style={{display: "flex", justifyContent: "center"}}>
+                                                <img src= {fileImage} alt= {filter.subject} width= "60px" height= "100%"/>
+                                            </div>    
+                                            <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap", textAlign:"center"}}>
+                                                {filter.subject}
+                                            </div>
                                         </div>
                                     </Link>
                                 </div>
@@ -54,7 +58,7 @@ function DashFiles({ filter, setFilter }) {
                         })
                     }
                 </section>
-            </div>
+            {/* </div> */}
         </div>
     );
 }

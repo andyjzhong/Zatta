@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { Button, InputGroup, FormControl } from 'react-bootstrap'
-import { CloseButton } from 'react-bootstrap';
-import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Button, InputGroup, FormControl, CloseButton } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+
 
 //https://www.npmjs.com/package/react-modal#installation
 
@@ -12,6 +12,7 @@ function DashNewTodo(props) {
 
     const [modal, setModal] = useState(false)
     const [subject, setSubject] = useState('')
+    const screen = useMediaQuery({query: "(min-width: 1200px)"})
 
     const modalStyle = {
         content: {
@@ -54,7 +55,7 @@ function DashNewTodo(props) {
         
         <div>
             <div style={{display: "flex", justifyContent: "center"}}>
-                <Button style={{display: "flex", justifyContent: "right"}} onClick={openModal} variant="primary">New Task</Button>
+                <Button style={{display: "flex", justifyContent: "right", marginLeft:"10px"}} onClick={openModal} variant="primary">{screen ? "New Task" : "+"}</Button>
             </div>
             <div className= "modalDiv">
                 <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>

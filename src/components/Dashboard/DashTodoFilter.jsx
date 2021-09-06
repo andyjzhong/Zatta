@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormControl } from 'react-bootstrap'
+import { CloseButton, FormControl } from 'react-bootstrap'
 
 
 function DashSearch({ setTaskFilter, taskFilter }) {
@@ -10,12 +10,12 @@ function DashSearch({ setTaskFilter, taskFilter }) {
     }
 
     return (
-        <div style={{display: "flex",  justifyContent: "center", width: '20rem' }}>
-
-                <form style={{display: "flex", flexDirection: 'row'}}>
-                    <FormControl placeholder="Filter Tasks" value={taskFilter} onChange={e => {setTaskFilter(e.target.value)}} style={{marginRight: '10px'}} />
-                    <Button  type= "submit" onClick={(e) => resetFilter(e)} variant="outline-secondary">Reset</Button>
-                </form>
+        <div>
+            
+            <form style={{display: "flex", flexDirection: 'row',alignItems:"center", borderRadius:"5px", border:"1px solid #CCC"}}>
+                <FormControl placeholder="Filter Tasks" value={taskFilter} onChange={e => {setTaskFilter(e.target.value)}} style={{marginRight: '10px', border:"none"}} />
+                <CloseButton onClick={(e) => resetFilter(e)}/>
+            </form>
 
         </div>
 

@@ -25,12 +25,14 @@ function DashTodo(props) {
 
     return (
         <div>
+            <div style={{display: "flex", flexDirection:"row", justifyContent: "flex-end", alignItems: "baseline", flexWrap: "wrap"}}>
                 <DashTodoFilter 
                 taskFilter={taskFilter}
                 setTaskFilter={setTaskFilter}
                 />
     
                 <DashNewTodo />
+            </div>
 
         <div className='dash-task-container'>
             <section className='dash-task-box'>
@@ -45,7 +47,7 @@ function DashTodo(props) {
                     return (
                         <div className='dash-task'>
                             <div className="dash-task-name">
-                                <div className='task-card'>
+                                <div className='task-card' style={{display: "flex", justifyContent: "center"}}>
                                         <span>{filter.subject}</span>
                                 </div>
                             </div>
