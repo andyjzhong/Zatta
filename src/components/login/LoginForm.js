@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import userStore  from '../Users/GetUsers';
+import axios from 'axios';
 
 function LoginForm({ history }) {
 
@@ -14,16 +15,23 @@ function LoginForm({ history }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const currentUser = allUsers.filter(item => item.username === loginInfo.username && item.password === loginInfo.password)
+        const currentUser = allUsers.filter(item => item.username === loginInfo.username)
         if(currentUser.length) {
-            setLogedIn(true)
-            setUser(currentUser)
-            history.push('/dashboard')
-        } else {
-            setLogedIn(false)
-            window.alert('Incorrect username or password')
-        }
-         
+            axios.post('http://localhost:4000/api/users/login', {
+                username: currentUser[0].username,
+                password: loginInfo.password
+            })
+            .then(res => {
+                if (res.data) {
+                    setLogedIn(true)
+                    setUser(currentUser)
+                    history.push('/dashboard')
+                } else {
+                    setLogedIn(false)
+                    window.alert('Incorrect username or password')
+                }
+            })
+        } 
         setLoginInfo({username: '', password: ''})
     }
 

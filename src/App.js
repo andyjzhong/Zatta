@@ -13,7 +13,7 @@ import userStore  from './components/Users/GetUsers';
 function App() {
 
   const urlNotes = "https://zatta1.herokuapp.com/api/notes/"
-  const urlUsers = "https://zatta1.herokuapp.com/api/users/"
+  const urlUsers = "http://localhost:4000/api/users/"
   const setUsers = userStore(state => state.setUsers)
   const setNotes = userStore(state => state.setNotes) 
   const isLoggedIn = userStore(state => state.isLoggedIn)
