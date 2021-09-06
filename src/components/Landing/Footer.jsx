@@ -7,17 +7,17 @@ function Footer(props) {
     <div class="max-w-screen-xl mx-auto px-4">
         <ul class="max-w-screen-md mx-auto text-lg font-light flex flex-wrap justify-between">
             <li class="my-2">
-                <a class="text-gray-400 hover:text-gray-300 dark:text-gray-300 dark:hover:text-white transition-colors duration-200" href="#">
+                <a class="text-gray-400 hover:text-gray-300 dark:text-gray-300 dark:hover:text-white transition-colors duration-200 no-underline" href="#">
                     FAQ
                 </a>
             </li>
             <li class="my-2">
-                <a class="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200" href="#">
+                <a class="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200 no-underline" href="#">
                     Github
                 </a>
             </li>
             <li class="my-2">
-                <a class="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200" href="#">
+                <a class="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200 no-underline" href="#">
                     LinkedIn
                 </a>
             </li>

@@ -11,7 +11,7 @@ function Navigation(props) {
             <div class="lg:flex lg:items-center lg:justify-between">
                 <div class="flex items-center justify-between">
                     <div class="text-xl font-semibold text-gray-700">
-                        <a class="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300" href="/">Zatta</a>
+                        <a class="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300 no-underline" href="/">Zatta</a>
                     </div>
 
                     
@@ -26,12 +26,12 @@ function Navigation(props) {
 
                 
                 <div class="hidden mx-4 lg:flex lg:items-center">
-                    <a href='#' class="block mx-4 mt-2 text-sm text-gray-700 capitalize lg:mt-0 dark:text-gray-200 ">Home</a>
-                    <a href="#" class="block mx-4 mt-2 text-sm text-gray-700 capitalize lg:mt-0 dark:text-gray-200 ">About</a>
+                    <a href='#' class="block mx-4 mt-2 text-sm text-gray-700 capitalize lg:mt-0 dark:text-gray-200 no-underline">Home</a>
+                    <a href="#" class="block mx-4 mt-2 text-sm text-gray-700 capitalize lg:mt-0 dark:text-gray-200 no-underline">About</a>
                   
                 <Switch>
 
-                <Link to="/Login"><button class=" block py-3 px-4 mt-2 mx-4 bg-black rounded-md text-sm
+                <Link to="/Login" class="no-underline"><button class=" block py-3 px-4 mt-2 mx-4 bg-black rounded-md text-sm
                     font-medium text-white 
                     focus:outline-none hover:bg-gray-700 hover:shadow-none">
                     Login

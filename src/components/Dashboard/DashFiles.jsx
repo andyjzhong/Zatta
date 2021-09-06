@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import fileImage from '../images/file.png'
+import fileImage from '../../images/fileimage.png'
 import './Dashboard.css'
+import axios from 'axios';
 
-function DashFiles({ files, filter }) {
+function DashFiles({ filter }) {
+
+    const [files, setFiles] = useState([])
+    const urlNotes = "https://zatta1.herokuapp.com/api/notes/"
+
+    useEffect(() => {
+    
+        axios.get(urlNotes).then((res) => {
+            setFiles(res.data)
+            
+        })
+        
+      }, [])
 
     return (
         <div className='dash-files-container'>
@@ -31,5 +44,6 @@ function DashFiles({ files, filter }) {
         </div>
     );
 }
+
 
 export default DashFiles;

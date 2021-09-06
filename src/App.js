@@ -31,9 +31,13 @@ function App() {
 
       <Route exact path="/login" component={ routerProps => <Login history={routerProps.history} />}/>
     
+<<<<<<< HEAD
       <Route  exact path = '/dashboard' component = { (routerProps) => isLoggedIn ? <Dashboard history={routerProps.history} /> : <Login {...routerProps.history.push('/login')} /> } />
 
       <Route exact path = '/notes/:id' component={(routerProps) => isLoggedIn ? <MainApp note={routerProps.match.params.id} /> : <Login />} /> 
+=======
+      <Route  exact path = '/dashboard' component = { () => <Dashboard files={files} setFiles={setFiles} /> } />
+>>>>>>> 35773a8 (initial task bar commit)
 
     </div>
   );
