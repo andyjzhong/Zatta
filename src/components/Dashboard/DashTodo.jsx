@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import fileImage from '../../images/fileimage.png'
+import React, { useState } from 'react';
 import './Dashboard.css'
-import axios from 'axios';
 import todo from './todo.json'
 import DashTodoFilter from './DashTodoFilter'
 import DashNewTodo from './DashNewTodo';

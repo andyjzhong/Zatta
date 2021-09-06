@@ -25,27 +25,19 @@ function Dashboard({ history }) {
         <div>
 
             <Navigation />
-            
-            <div style={{display: "flex", flexDirection: 'row', justifyContent: 'center'}}>
-            <DashFilter 
-                    files = {files}
-                    setFilter= {setFilter}  
-                    filter= {filter}
-                />
-    
-                <DashNewNote />
-        
-            </div>
 
-            <div style={{display: "flex", flexDirection: 'row', justifyContent: 'center'}}>
-
-                <DashFiles 
-                    filter= {filter}
-                    files= {files}
-                    setFiles= {setFiles}
-                />
-                <DashTodo />
-
+            <div style={{display: "flex", justifyContent: 'center'}}>
+                <div style={{flexDirection: 'row', width: "70%"}}>
+                    <DashFiles 
+                        filter= {filter}
+                        files= {files}
+                        setFiles= {setFiles}
+                        setFilter= {setFilter}
+                    />
+                </div>
+                <div style={{display: "flex", flexDirection: 'column'}}>
+                    <DashTodo />
+                </div>
 
             </div>
             

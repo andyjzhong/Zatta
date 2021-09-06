@@ -10,11 +10,11 @@ function DashSearch({ setFilter, filter }) {
     }
 
     return (
-        <div style={{display: "flex",  justifyContent: "center", width: '20rem' }}>
+        <div>
 
                 <form style={{display: "flex", flexDirection: 'row'}}>
-                    <FormControl placeholder="Filter Notes" value={filter} onChange={e => {setFilter(e.target.value)}} style={{marginRight: '10px'}} />
-                    <Button  type= "submit" onClick={(e) => resetFilter(e)} variant="outline-secondary">Reset</Button>
+                    <FormControl placeholder="Filter Notes" value={filter} onChange={e => {setFilter(e.target.value)}} style={{marginRight: "5px"}} />
+                    <Button  type= "submit" onClick={(e) => resetFilter(e)} variant="outline-secondary" style={{marginRight: "5px"}}>Reset</Button>
                 </form>
 
         </div>

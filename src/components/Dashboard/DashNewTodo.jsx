@@ -63,7 +63,7 @@ function DashNewTodo(props) {
                         <CloseButton onClick={closeModal}/>
                     </div>
                     <InputGroup className="mb-3">
-                        <FormControl placeholder="Enter Note Name" style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}} value={subject} onChange={(e) => setSubject(e.target.value)} />
+                        <FormControl placeholder="Enter Task" style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}} value={subject} onChange={(e) => setSubject(e.target.value)} />
                         <Link to="/dashboard"><Button variant="outline-secondary" >Create</Button></Link>
                     </InputGroup>                
                 </Modal>
