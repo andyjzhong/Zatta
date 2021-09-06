@@ -46,7 +46,7 @@ function Login(props) {
 
                 
                 <div class="sm:flex sm:flex-wrap mt-8 sm:mb-4 text-sm text-center">
-                    <a href="forgot-password" class="flex-2 underline">
+                    <a href="forgot-password" class="flex-2 underline text-black no-underline">
                         Forgot password?
                     </a>
 
@@ -54,7 +54,7 @@ function Login(props) {
                         or
                     </p>
         
-                    <a href="register" class="flex-2 underline">
+                    <a href="register" class="flex-2 underline text-black no-underline">
                         Create an Account
                     </a>
                 </div>

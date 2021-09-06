@@ -27,6 +27,7 @@ export default function MainApp({ note }) {
             <div className='notes-header'>
                 <input className='main-note-sbj' type='text' value={subject} onChange={(e) => setSubject(e.target.value)} />
                 <div >
+                    {/* want to edit where dashboard still goes to dashboard, but the save stays and drops a green banner saying it has saved */}
                     <Link to='/dashboard'><button className='save-note' onClick={saveNote} >Dashboard</button></Link>
                     <Link to='/dashboard'><button className='save-note' onClick={saveNote} >Save</button></Link>
                 </div>

@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import fileImage from '../../images/file.png'
+import fileImage from '../../images/fileimage.png'
 import './Dashboard.css'
+import axios from 'axios';
+import { render } from '@testing-library/react';
 
-function DashFiles({ files, filter }) {
+function DashFiles({ filter }) {
+
+    const [files, setFiles] = useState([])
+    const urlNotes = "https://zatta1.herokuapp.com/api/notes/"
+
+    useEffect(() => {
+    
+        axios.get(urlNotes).then((res) => {
+            setFiles(res.data)
+            
+        })
+        
+      }, [])
+
+
     return (
         <div className='dash-files-container'>
             <section className='dash-files-box'>
-                {files.filter((files) => {
+                
+                {files.filter((file) => {
                     if (filter === "") {
-                        return files.subject
-                    } else if (files.subject.toLowerCase().includes(filter.toLowerCase())) {
-                        return files.subject
+                        return file.subject
+                    } else if (file.subject.toLowerCase().includes(filter.toLowerCase())) {
+                        return file.subject
                     } else return null 
                 }).map(filter => {
                     return (

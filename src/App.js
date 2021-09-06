@@ -33,7 +33,7 @@ function App() {
 
       <Route exact path="/Login" component ={Login}/>
     
-      <Route  exact path = '/dashboard' component = { () => <Dashboard files={files} /> } />
+      <Route  exact path = '/dashboard' component = { () => <Dashboard files={files} setFiles={setFiles} /> } />
 
       <Route exact path = '/notes/:id' component={(routerProps) => <MainApp note={routerProps.match.params.id} /> } />
     </div>
