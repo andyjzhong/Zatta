@@ -3,13 +3,13 @@ import React from 'react';
 function Signup(props) {
       return (
             <div>
-                  <div class="flex flex-col h-screen bg-gray-100">
+                  <div class="flex flex-col h-screen sm:h-auto bg-gray-100 overflow-scroll ">
     
-    <div class="grid place-items-center mx-2 my-20 sm:my-auto">
+    <div class="grid place-items-center mx-2 my-10 sm:my-auto ">
         
-        <div class="w-11/12 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 
-            px-6 py-10 sm:px-10 sm:py-6 sm:mt-20
-            bg-white rounded-lg shadow-md lg:shadow-lg">
+        <div class="w-11/12 p-10 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 
+            px-6 py-10 sm:px-10 sm:py-6 sm:mt-auto
+            bg-white rounded-lg shadow-md lg:shadow-lg md:h-auto">
 
             
             <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800">
@@ -20,13 +20,6 @@ function Signup(props) {
                 
                 <label for="email" class="block text-xs font-semibold text-gray-600 uppercase">First Name</label>
                 <input id="username" type="name" name="first name" placeholder="First Name" autocomplete="name"
-                    class="block w-full py-3 px-2 mt-2 
-                    text-gray-800 appearance-none 
-                    border-solid border-2 rounded-2xl border-gray-100
-                    focus:text-gray-500 focus:outline-none focus:border-gray-200 mb-2"
-                    required />
-                <label for="email" class="block text-xs font-semibold text-gray-600 uppercase">Last Name</label>
-                <input id="username" type="email" name="last name" placeholder="Last Name" autocomplete="name"
                     class="block w-full py-3 px-2 mt-2 
                     text-gray-800 appearance-none 
                     border-solid border-2 rounded-2xl border-gray-100
@@ -66,7 +59,7 @@ function Signup(props) {
                 <div class="sm:flex sm:flex-wrap mt-8 sm:mb-4 text-sm justify-center text-center">
                     
                   <p>If you have an account
-                        <a href="register" class=" text-black  ml-1 ">
+                        <a href="register" class=" text-black  ml-2 hover:text-gray-900 ">
                          Sign In
                     </a>
                     
