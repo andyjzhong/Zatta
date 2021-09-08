@@ -80,7 +80,7 @@ function DashNewNote({ history, filter }) {
                     <div className= "modalDiv">
                         <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>
                             <div style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}}>
-                                <h3>New Note</h3>   
+                                <h3>New Note</h3>
                                 <CloseButton onClick={closeModal}/>
                             </div>
                             <InputGroup className="mb-3">
@@ -147,30 +147,26 @@ function DashNewNote({ history, filter }) {
                                 setTaskFilter={setTaskFilter}
                             />
                             <div className='dash-task-container'>
-                            <section className='dash-task-box'>
-                                {task.filter((file) => {
-                                    if (taskFilter === "") {
-                                        return file.subject
-                                    } else if (file.subject.toLowerCase().includes(taskFilter.toLowerCase())) {
-                                        return file.subject
-                                    } else return null 
-                                }).map(filter => {
-                                    return (
-                                        <div className='dash-task'>
-                                            <div className="dash-task-name">
-                                                <div className='task-card' style={{display: "flex", justifyContent: "center", marginTop: "5px"}}>
-                                                <InputGroup>
-                                                    <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                                                    <FormControl aria-label={filter.subject}/>
-                                                </InputGroup>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                                }
-                            </section>
-                        </div>               
+                                <section className='dash-task-box'>
+                                    {task.filter((file) => {
+                                        if (taskFilter === "") {
+                                            return file.subject
+                                        } else if (file.subject.toLowerCase().includes(taskFilter.toLowerCase())) {
+                                            return file.subject
+                                        } else return null 
+                                    }).map(filter => {
+                                        return (
+                                                    <div className='task-card' style={{display: "flex", justifyContent: "center", marginTop: "5px"}}>
+                                                    <InputGroup>
+                                                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                                                        <FormControl aria-label={filter.subject}/>
+                                                    </InputGroup>
+                                                    </div>
+                                        )
+                                    })
+                                    }
+                                </section>
+                            </div>               
                         </Modal>
                     </div>
                 </div>

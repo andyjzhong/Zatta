@@ -42,17 +42,13 @@ function DashTodo(props) {
                         } else return null 
                     }).map(filter => {
                         return (
-                            <div className='dash-task'>
-                                <div className="dash-task-name">
                                     <div className='task-card' style={{display: "flex", justifyContent: "center"}}>
                                         {/* <span>{filter.subject}</span> */}
                                         <InputGroup>
                                             <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                                            <FormControl aria-label={filter.subject}/>
+                                            {/* <FormControl aria-label={filter.subject}/> */}
                                         </InputGroup>
                                     </div>
-                                </div>
-                            </div>
                         )
                     })
                     }
