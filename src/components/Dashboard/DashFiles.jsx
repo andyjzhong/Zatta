@@ -12,11 +12,11 @@ function DashFiles({ files, filter, setFilter, history }) {
 
     return (
 
-        <div>
+        <div style={{width:"95%"}}>
             {screen
             ?
                 <div>
-                    <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap" }}>
+                    <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap"}}>
                         <DashFilter 
                             files = {files}
                             setFilter= {setFilter}  
@@ -28,8 +28,10 @@ function DashFiles({ files, filter, setFilter, history }) {
                         filter={filter}
                         history={history}
                         />
+
+                        
                     </div>
-                    {/* <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}}>
+                    <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}}>
                         {files.filter((file) => filter === ""                                                 // if 
                                                 ? file.subject 
                                                 : file.subject.toLowerCase().includes(filter.toLowerCase())   // else if  
@@ -52,11 +54,11 @@ function DashFiles({ files, filter, setFilter, history }) {
                                 )
                             })
                         }
-                    </section> */}
+                    </section>
                 </div>
             :
             <div>
-            <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap" }}>
+            <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap"}}>
                 <DashFilter 
                     files = {files}
                     setFilter= {setFilter}  
@@ -65,7 +67,7 @@ function DashFiles({ files, filter, setFilter, history }) {
 
                 <DashNewNote history={history} />
             </div>
-            {/* <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}}>
+            <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}}>
                 {files.filter((file) => filter === ""                                                 // if 
                                         ? file.subject 
                                         : file.subject.toLowerCase().includes(filter.toLowerCase())   // else if  
@@ -88,7 +90,7 @@ function DashFiles({ files, filter, setFilter, history }) {
                         )
                     })
                 }
-            </section> */}
+            </section>
         </div>
             }
                 

@@ -28,7 +28,7 @@ function LoginForm({ history }) {
                 if(res.data){
                     axios.post(urlUsers + '/username', { username: loginInfo.username })
                     .then(res => {
-                        axios.get(urlNotes + `/author/${res.data[0]._id}`).then(res => {
+                        axios.get(urlNotes + `author/${res.data[0]._id}`).then(res => {
                             setNotes(res.data)
                         })
                         return res.data[0]
