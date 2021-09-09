@@ -5,6 +5,9 @@ import axios from 'axios'
 import { Button, FormControl } from 'react-bootstrap'
 import Modal from 'react-modal';
 import './MainApp.css'
+import userStore  from '../Users/GetUsers.js';
+import { render } from '@testing-library/react'
+
 
 
 export default function MainApp({ note }) {
@@ -13,6 +16,8 @@ export default function MainApp({ note }) {
     const [subject, setSubject] = useState('')
     const urlNotes = 'https://zatta1.herokuapp.com/api/notes/'
     const [modal, setModal] = useState(false)
+    const currentUser = userStore(state => state.currentUser)
+
 
 
 
@@ -32,12 +37,16 @@ export default function MainApp({ note }) {
     }
 
    function deleteNote()  {
-        axios.delete(urlNotes + note)
+        axios.delete(urlNotes + note).then(() => {
+            axios.get(urlNotes + `author/${currentUser._id}`).then(res => {
+                setNotes(res.data)
+            })
+        })
     }
 
     const modalStyle = {
         content: {
-          top: '35%',
+          top: '25%',
           left: '50%',
           right: 'auto',
           bottom: 'auto',
@@ -65,8 +74,8 @@ export default function MainApp({ note }) {
                     <div style={{display: "flex", justifyContent: "center"}}>
                         <h5>Are you sure you would like to delete this note?</h5>   
                     </div>
-                    <div style={{display:"flex", justifyContent:"center", alignItems:"baseline"}}>
-                        <Button variant="outline-dark" onClick={() => setModal(false)}>Cancel</Button>
+                    <div style={{display:"flex", justifyContent:"space-evenly", alignItems:"center", marginTop: "30px"}}>
+                        <Button variant="outline-dark" onClick={() =>setModal(false)}>Cancel</Button>
                         <Link to="/dashboard"><Button variant="danger" onClick={() => deleteNote()}>Delete</Button></Link>
                     </div>    
                 </Modal>

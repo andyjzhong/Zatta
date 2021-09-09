@@ -1,14 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import fileImage from '../images/file.png'
+import React, { useEffect } from 'react';
 import DashFilter from './DashFilter';
 import DashNewNote from './DashNewNote';
 import { useMediaQuery } from 'react-responsive';
+import DashFileList from './DashFileList';
+import userStore  from '../Users/GetUsers.js';
+import axios from 'axios';
 import './styles/Dashboard.css'
 
-function DashFiles({ files, filter, setFilter, history }) {
 
+function DashFiles({ filter, setFilter, history }) {
+
+
+    const currentUser = userStore(state => state.currentUser)
+    const urlNotes = userStore(state => state.urlNotes)
+    const setNotes = userStore(state => state.setNotes)
     const screen = useMediaQuery({query: "(min-width: 1024px)"})
+
+
+    useEffect(() => {     
+        axios.get(urlNotes + `author/${currentUser._id}`).then(res => {
+            setNotes(res.data)
+    })
+    } ,[])
+
 
     return (
 
@@ -19,80 +33,32 @@ function DashFiles({ files, filter, setFilter, history }) {
                 <div>
                     <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap"}}>
                         <DashFilter 
-                            files = {files}
                             setFilter= {setFilter}  
                             filter= {filter}
                         />
-
                         <DashNewNote 
-                        files={files}
-                        filter={filter}
-                        history={history}
-                        />
-
-                        
+                            history={history}
+                        /> 
                     </div>
-                    <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", marginTop: '50px' }}>
-                        {files.filter((file) => filter === ""
-                                                ? file.subject
-                                                : file.subject.toLowerCase().includes(filter.toLowerCase())
-                                                ? file.subject
-                                                : null
-                            ).map(filter => {
-                                return (
-                                    <div className='dash-files' style={{width: "8rem"}}>
-                                        <Link to= {`/notes/${filter._id}`} key= {filter.subject} className='dash-file-link' style={{display: "flex", flexDirection: "column", margin: "20px", textDecoration: "none", color: "black"}}>
-                                            <div className='dash-card' style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
-                                                <div style={{display: "flex", justifyContent: "center"}}>
-                                                    <img src= {fileImage} alt= {filter.subject} width= "60px" height= "100%"/>
-                                                </div>    
-                                                <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap", textAlign:"center"}}>
-                                                    {filter.subject}
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                )
-                            })
-                        }
-                    </section>
+                        <DashFileList 
+                            filter = {filter}
+                        />
                 </div>
             :
-            <div>
-                <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap"}}>
-                    <DashFilter 
-                        files = {files}
-                        setFilter= {setFilter}  
-                        filter= {filter}
-                    />
-
-                    <DashNewNote history={history} />
+                <div>
+                    <div style={{display: "flex", flexDirection:"row", justifyContent: "center", alignItems: "baseline", flexWrap: "wrap"}}>
+                        <DashFilter 
+                            setFilter= {setFilter}  
+                            filter= {filter}
+                        />
+                        <DashNewNote 
+                            history={history} 
+                        />
+                    </div>
+                        <DashFileList 
+                            filter = {filter}
+                        />
                 </div>
-                <section className='dash-files-box' style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}}>
-                    {files.filter((file) => filter === ""
-                                            ? file.subject
-                                            : file.subject.toLowerCase().includes(filter.toLowerCase())
-                                            ? file.subject
-                                            : null
-                        ).map(filter => {
-                            return (
-                                <div className='dash-files' style={{width: "8rem"}}>
-                                    <Link to= {`/notes/${filter._id}`} key= {filter.subject} className='dash-file-link' style={{display: "flex", flexDirection: "column", margin: "20px", textDecoration: "none", color: "black"}}>
-                                        <div className='dash-card' style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
-                                            <div style={{display: "flex", justifyContent: "center"}}>
-                                                <img src= {fileImage} alt= {filter.subject} width= "60px" height= "100%"/>
-                                            </div>    
-                                            <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap", textAlign:"center"}}>
-                                                {filter.subject}
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            )
-                        })
-                    }
-                </section>
-            </div>
             }
                 
         </div>

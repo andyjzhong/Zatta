@@ -6,6 +6,7 @@ import userStore  from '../Users/GetUsers.js';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import DashTodo from './DashTodo';
+import DashNewNoteModal from './DashNewNoteModal.jsx';
 
 
 
@@ -62,20 +63,6 @@ function DashNewNote({ history, filter }) {
         setTaskModal(false)
     }
 
-
-
-    const newNote = () => {
-        const urlNotes = `https://zatta1.herokuapp.com/api/notes/`
-        axios.post(urlNotes + currentUser._id, { subject: subject, text: '' })
-            .then((res) => {
-                axios.get(urlNotes + `/author/${currentUser._id}`).then(res => {
-                    setNotes(res.data)
-                })
-                console.log('/notes/' + res.data._id)
-                history.push(`/notes/${res.data._id}`)
-            })
-    }
-
     
     return (
         
@@ -87,18 +74,12 @@ function DashNewNote({ history, filter }) {
                     <div style={{display: "flex", justifyContent: "center"}}>
                         <Button style={{display: "flex", justifyContent: "right", marginLeft:"10px", backgroundColor:"black"}} onClick={openModal} variant="dark">{screen ? "New Note" : "+"}</Button>
                     </div>
-                    <div className= "modalDiv">
-                        <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>
-                            <div style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}}>
-                                <h3>New Note</h3>   
-                                <CloseButton onClick={closeModal}/>
-                            </div>
-                            <InputGroup className="mb-3">
-                                <FormControl placeholder="Enter Note Name" style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}} value={subject} onChange={(e) => setSubject(e.target.value)} />
-                                <Link to="/dashboard"><Button style={{backgroundColor:"black"}} variant="dark" onClick={newNote} >Create</Button></Link>
-                            </InputGroup>                
-                        </Modal>
-                    </div>
+                    <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>
+                        <DashNewNoteModal 
+                            history={history}
+                            closeModal={closeModal}
+                        />
+                    </Modal>
                 </div>
             :
                 <div>
@@ -106,30 +87,23 @@ function DashNewNote({ history, filter }) {
                         <Button style={{display: "flex", justifyContent: "right", marginLeft:"10px", backgroundColor:"black"}} onClick={openModal} variant="dark">{screen ? "New Note" : "Note"}</Button>
                         <Button style={{display: "flex", justifyContent: "right", marginLeft:"10px", backgroundColor:"black"}} onClick={openTaskModal} variant="dark">Task</Button>
                     </div>
-                    <div className= "modalDiv">
-                        <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>
-                            <div style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}}>
-                                <h3>New Note</h3>   
-                                <CloseButton onClick={closeModal}/>
-                            </div>
-                            <InputGroup className="mb-3">
-                                <FormControl placeholder="Enter Note Name" style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}} value={subject} onChange={(e) => setSubject(e.target.value)} />
-                                <Link to="/dashboard"><Button style={{backgroundColor:"black"}} variant="dark" onClick={newNote}>Create</Button></Link>
-                            </InputGroup>                
-                        </Modal>
-                    </div>
+                    <Modal isOpen= {modal} onRequestClose={() => setModal(false)} style={modalStyle}>
+                        <DashNewNoteModal 
+                            history={history}
+                            closeModal={closeModal}
+                        />
+                    </Modal>
                     <div className= "modalDiv">
                         <Modal isOpen= {taskModal} onRequestClose={() => setTaskModal(false)} style={taskModalStyle}>
                             <div style={{display: "flex", flexDirection:"row", justifyContent: "space-between", alignItems: "baseline"}}>
                                 <h3>Task List</h3>   
                                 <CloseButton onClick={closeTaskModal}/>
                             </div>
-                            <DashTodo />
+                        <DashTodo />
                         </Modal>
                     </div>
                 </div>
             }
-
         </div>
     );
 }

@@ -9,53 +9,61 @@ import axios from 'axios';
 function Dashboard({ history }) {
 
     const currentUser = userStore(state => state.currentUser)
-    const notes = userStore(state => state.notes)
     const urlNotes = userStore(state => state.urlNotes)
+    const setNotes = userStore(state => state.setNotes) 
+    const setTodos = userStore(state => state.setTodos) 
+    const urlTodos = userStore(state => state.urlTodos)
     const isLoggedIn = userStore(state => state.isLoggedIn)
-    const [files, setFiles] = useState(notes)
+    const notes = userStore(state => state.notes)
+    const todos = userStore(state => state.todos)
+    
     const [filter, setFilter] = useState("")
     
     const screen = useMediaQuery({query: "(min-width: 1024px)"})
 
     useEffect(() => {
         axios.get(urlNotes + `author/${currentUser._id}`).then(res => {
-            setFiles(res.data)
+            setNotes(res.data)
         })        
+        .then(() => {
+            axios.get(urlTodos + `author/${currentUser._id}`).then(res => {
+                setTodos(res.data)
+            })
+        })
     } ,[])
 
     
 
     return (
-        <div style={{backgroundColor:"#F3F4F6", height: "100vh"}}>
+        <div style={{backgroundColor:"#F3F4F6"}}>
 
             {screen 
             ?
                 <div>
+
                     <DashNavigation />
-                    <div style={{display: "flex", justifyContent: 'space-around', marginTop:"20px", marginBottom:"20px"}}>
-                        <div style={{display:"flex", flexDirection: 'row',justifyContent:"center",overflowY: "auto", height: "83vh", width: "65%", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"15px", padding: "10px", marginLeft:"30px", marginRight:"30px", marginBottom: "10px"}}>
+                    <div style={{display: "flex", justifyContent: 'space-around', marginTop:"20px"}}>
+                        <div style={{display:"flex", flexDirection: 'row',justifyContent:"center",overflowY: "auto", height: "85vh", width: "65%", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"15px", padding: "10px", marginLeft:"30px", marginRight:"30px", marginBottom: "10px"}}>
                             <DashFiles 
                                 filter= {filter}
-                                files= {files}
-                                setFiles= {setFiles}
                                 setFilter= {setFilter}
                                 history={history}
                             />
                         </div>
-                        <div style={{display: "flex", flexDirection: 'column',overflowY: "auto", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"15px", padding: "10px", height: "83vh", marginRight:"20px", width:"30%", marginBottom:"10px"}}>
+                        <div style={{display: "flex", flexDirection: 'column',overflowY: "auto", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"15px", padding: "10px", height: "85vh", marginRight:"20px", width:"30%"}}>
                             <DashTodo />
                         </div>
                     </div>
+
                 </div>
             :
-                <div style={{backgroundColor:"#F3F4F6"}}>
+                <div style={{backgroundColor:"#F3F4F6", height: "100vh"}}>
+
                     <DashNavigation />
-                    <div style={{display: "flex", justifyContent: 'space-around', marginTop:"10px"}}> 
-                        <div style={{flexDirection: 'row', height: "88vh",overflowY: "auto", width: "80%", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"15px", padding: "10px"}}>
+                    <div style={{display: "flex", justifyContent: 'space-around', marginTop:"10px"}}>
+                        <div style={{flexDirection: 'row', height: "85vh",overflowY: "auto", width: "80%", backgroundColor: "white", boxShadow:"0 0 10px darkgray", borderRadius:"15px", padding: "10px"}}>
                             <DashFiles 
                                 filter= {filter}
-                                files= {files}
-                                setFiles= {setFiles}
                                 setFilter= {setFilter}
                                 history={history}
                             />

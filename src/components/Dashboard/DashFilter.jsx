@@ -1,11 +1,9 @@
 import React from 'react';
-import userStore  from '../Users/GetUsers.js';
 import { CloseButton, FormControl } from 'react-bootstrap';
 
 
 function DashSearch({ setFilter, filter }) {
 
-    const currentUser = userStore(state => state.currentUser)
 
     function resetFilter (e) {
         e.preventDefault()
